@@ -114,15 +114,15 @@ enable radiance support: yes
 enable analyze support: yes
 enable PPM support: yes
 use fftw3 for FFT: yes
-Magick package: none
-Magick API version: none
-load with libMagick: no
-save with libMagick: no
+Magick package: MagickCore
+Magick API version: magick6
+load with libMagick: yes
+save with libMagick: yes
 accelerate loops with orc: yes
 ICC profile support with lcms: yes (lcms2)
 file import with niftiio: no
 file import with libheif: yes
-file import with OpenEXR: no
+file import with OpenEXR: yes
 file import with OpenSlide: no
 file import with matio: no
 PDF import with PDFium: no
