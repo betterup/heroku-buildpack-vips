@@ -48,6 +48,13 @@ https://github.com/brandoncc/heroku-buildpack-vips
 VIPS_VERSION=x.y.z ./build.sh
 ```
 
+You may also target specific Heroku stack version(s) by passing them in as arguments.
+
+```sh
+VIPS_VERSION=x.y.z ./build.sh 20 18
+# Will only build heroku-20 and heroku-18 stacks, in that order
+```
+
 After building a tar file, it will be copied to the `build` directory. Then you should commit this changes to git.
 
 ## Build configuration (heroku-18)
