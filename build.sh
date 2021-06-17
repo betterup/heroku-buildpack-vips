@@ -3,7 +3,11 @@
 # set -x
 set -e
 
-STACK_VERSIONS=(16 18 20)
+if [ "$#" -eq 0 ]; then
+  STACK_VERSIONS=(16 18 20)
+else
+  STACK_VERSIONS=( "$@" )
+fi
 
 for stack_version in "${STACK_VERSIONS[@]}"; do
   image_name=libvips-heroku-$stack_version:$VIPS_VERSION

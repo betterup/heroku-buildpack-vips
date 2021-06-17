@@ -48,6 +48,13 @@ https://github.com/brandoncc/heroku-buildpack-vips
 VIPS_VERSION=x.y.z ./build.sh
 ```
 
+You may also target specific Heroku stack version(s) by passing them in as arguments.
+
+```sh
+VIPS_VERSION=x.y.z ./build.sh 20 18
+# Will only build heroku-20 and heroku-18 stacks, in that order
+```
+
 After building a tar file, it will be copied to the `build` directory. Then you should commit this changes to git.
 
 ## Build configuration (heroku-18)
@@ -114,15 +121,15 @@ enable radiance support: yes
 enable analyze support: yes
 enable PPM support: yes
 use fftw3 for FFT: yes
-Magick package: none
-Magick API version: none
-load with libMagick: no
-save with libMagick: no
+Magick package: MagickCore
+Magick API version: magick6
+load with libMagick: yes
+save with libMagick: yes
 accelerate loops with orc: yes
 ICC profile support with lcms: yes (lcms2)
 file import with niftiio: no
 file import with libheif: yes
-file import with OpenEXR: no
+file import with OpenEXR: yes
 file import with OpenSlide: no
 file import with matio: no
 PDF import with PDFium: no
