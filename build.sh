@@ -3,8 +3,15 @@
 # set -x
 set -e
 
+# Remove existing builds so that unsupported stacks are automatically removed
+rm -rf ./build/*.tar.gz
+
+# Remove configuration logs so that unsupported stacks are automatically removed
+mkdir -p ./build/configurations
+rm -rf ./build/configurations/*.log
+
 if [ "$#" -eq 0 ]; then
-  STACK_VERSIONS=(16 18 20)
+  STACK_VERSIONS=(18 20 22)
 else
   STACK_VERSIONS=( "$@" )
 fi
@@ -20,5 +27,5 @@ for stack_version in "${STACK_VERSIONS[@]}"; do
 
   mkdir -p build
 
-  docker run --rm -t -v $PWD/build:/build $image_name sh -c 'cp -f /usr/local/vips/build/*.tar.gz /build'
+  docker run --rm -t -v $PWD/build:/build $image_name sh -c 'cp -f /usr/local/vips/build/*.tar.gz /build && cp -f /usr/local/vips/build/*.config.log /build/configurations'
 done
